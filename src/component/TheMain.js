@@ -1,12 +1,13 @@
 import React from "react";
-import CheckBoxInput from "./CheckBoxInput";
-import ToDoUL from "./ToDoUL";
+import {ToDoUL} from "./ToDoUL.js";
 
-export default function TheMain() {
+export function TheMain(props) {
   return (
     <section class="main">
-      <CheckBoxInput />
-      <ToDoUL />
+      <input class="toggle-all" type="checkbox" />
+      <ToDoUL items = {props.items} 
+              onClickRemove = {props.onClickRemove}
+              toggle = {props.toggleComplete} />
     </section>
   );
 }

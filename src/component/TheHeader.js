@@ -1,12 +1,24 @@
 import React from "react";
-import NewInput from "./NewInput";
-import Title from "./Title";
 
-export default function TheHeader() {
+export function TheHeader(props) {
+
+  function handleKeyUp(event) {
+    const { key, target } = event;
+    const text = target.value.trim();
+    if (key !== 'Enter' || text.length === 0) {
+      return;
+    }
+    props.onPressAdd(text);
+    target.value = "";
+  }
+
   return (
     <header class="header">
-      <Title />
-      <NewInput />
+      <h1>{props.title}</h1>
+      <input class="new-todo" 
+             placeholder= {props.placeHolder}
+             onKeyUp={handleKeyUp} 
+             autoFocus/>
     </header>
   );
 }
